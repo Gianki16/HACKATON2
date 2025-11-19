@@ -5,7 +5,7 @@ import { ProjectList } from '../components/projects/ProjectList';
 import { ProjectForm } from '../components/projects/ProjectForm';
 import { ProjectFilters } from '../components/projects/ProjectFilters';
 import { useProjects } from '../hooks/useProjects';
-import { ProjectStatus } from '../types';
+import { type ProjectStatus } from '../types';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 export const Projects: React.FC = () => {
@@ -20,7 +20,7 @@ export const Projects: React.FC = () => {
     totalPages,
     fetchProjects,
     deleteProject 
-  } = useProjects({ search, status, page, limit: 12 });
+  } = useProjects({ search, status: status || undefined, page, limit: 12 });
 
   return (
     <div className="space-y-6">

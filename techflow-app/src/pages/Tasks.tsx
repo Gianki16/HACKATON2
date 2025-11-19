@@ -7,7 +7,7 @@ import { TaskBoard } from '../components/tasks/TaskBoard'; // ← NUEVO
 import { TaskForm } from '../components/tasks/TaskForm';
 import { TaskFilters } from '../components/tasks/TaskFilters';
 import { useTasks } from '../hooks/useTasks';
-import { TaskStatus, TaskPriority } from '../types';
+import { type TaskStatus, type TaskPriority } from '../types';
 import { 
   PlusIcon, 
   ArrowDownTrayIcon,
@@ -33,7 +33,7 @@ export const Tasks: React.FC = () => {
     fetchTasks,
     deleteTask,
     updateTaskStatus 
-  } = useTasks({ search, status, priority, page, limit: 100 }); // ← Aumenté limit para el board
+  } = useTasks({ search, status: status || undefined, priority: priority || undefined, page, limit: 100 }); // ← Aumenté limit para el board
 
   const handleExport = () => {
     try {
