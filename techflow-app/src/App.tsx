@@ -1,41 +1,157 @@
-// src/App.tsx
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { ProtectedRoute } from './components/layout/ProtectedRoute';
+import { Navbar } from './components/layout/Navbar';
+import { Sidebar } from './components/layout/Sidebar';
 
-import React from 'react';
+// Pages
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Dashboard } from './pages/Dashboard';
+import { Projects } from './pages/Projects';
+import { ProjectDetails } from './pages/ProjectDetails';
+import { Tasks } from './pages/Tasks';
+import { TaskDetails } from './pages/TaskDetails';
+import { Team } from './pages/Team';
+import { Profile } from './pages/Profile';
+
+const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <main className="flex-1 p-6 lg:ml-64">
+          <div className="max-w-7xl mx-auto">
+            {children}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
 
 function App() {
   return (
-    // Usa clases de Tailwind directamente en el className
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      
-      {/* Tarjeta de Contenido */}
-      <div className="bg-white p-8 rounded-xl shadow-2xl max-w-lg w-full transform transition duration-500 hover:scale-105">
-        
-        {/* Título */}
-        <h1 className="text-4xl font-extrabold text-indigo-700 mb-4 text-center">
-          ✅ Tailwind Funciona
-        </h1>
-        
-        {/* Descripción */}
-        <p className="text-gray-600 mb-6 text-center">
-          Si ves este estilo (fondo gris, texto púrpura, sombra de tarjeta), ¡todo está instalado!
-        </p>
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-        {/* Botón interactivo */}
-        <button 
-          className="w-full bg-indigo-500 text-white font-semibold py-3 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition duration-300"
-        >
-          Haz Clic para Probar
-        </button>
+            {/* Protected Routes */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <Dashboard />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/projects"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <Projects />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/projects/:id"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <ProjectDetails />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/tasks"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <Tasks />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/tasks/:id"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <TaskDetails />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/team"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <Team />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <AppLayout>
+                    <Profile />
+                  </AppLayout>
+                </ProtectedRoute>
+              }
+            />
 
-        {/* Ejemplo de diseño responsivo */}
-        <div className="mt-6 p-3 bg-yellow-100 border-l-4 border-yellow-500">
-          <p className="text-sm text-yellow-700">
-            **Clase responsiva de prueba:** El texto es <span className="text-base font-bold sm:text-lg md:text-xl text-red-600">GRANDE en móvil (sm) y aún más GRANDE en tablet (md)</span>.
-          </p>
-        </div>
+            {/* Redirect root to dashboard */}
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            
+            {/* 404 - Redirect to dashboard */}
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
 
-      </div>
-    </div>
+          {/* Toast Notifications */}
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: 'var(--color-surface)',
+                color: 'var(--color-text)',
+                border: '1px solid var(--color-border)',
+              },
+              success: {
+                iconTheme: {
+                  primary: '#10b981',
+                  secondary: '#fff',
+                },
+              },
+              error: {
+                iconTheme: {
+                  primary: '#ef4444',
+                  secondary: '#fff',
+                },
+              },
+            }}
+          />
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
