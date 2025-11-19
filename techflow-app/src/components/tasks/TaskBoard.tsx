@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
   DndContext,
-  DragEndEvent,
+  type DragEndEvent,
   DragOverlay,
-  DragStartEvent,
+  type DragStartEvent,
   PointerSensor,
   useSensor,
   useSensors,
@@ -17,7 +17,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
-import { Task, TaskStatus } from '../../types';
+import { type Task, type TaskStatus } from '../../types';
 import { TASK_STATUS, PRIORITY_COLORS } from '../../utils/constants';
 import { 
   CalendarIcon, 
