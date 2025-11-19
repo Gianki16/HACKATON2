@@ -1,5 +1,5 @@
 import api from './api';
-import { TeamMember, Task } from '../types';
+import { type TeamMember, type Task } from '../types';
 
 export const teamService = {
   async getMembers(): Promise<TeamMember[]> {

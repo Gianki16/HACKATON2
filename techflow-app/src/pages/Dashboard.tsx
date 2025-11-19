@@ -5,7 +5,7 @@ import { ActivityFeed } from '../components/dashboard/ActivityFeed';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { taskService } from '../services/taskService';
 import { projectService } from '../services/projectService';
-import { DashboardStats } from '../types';
+import { type DashboardStats } from '../types';
 import {
   CheckCircleIcon,
   ClockIcon,

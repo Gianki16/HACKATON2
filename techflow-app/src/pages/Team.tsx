@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TeamMemberList } from '../components/team/TeamMemberList';
 import { teamService } from '../services/teamService';
-import { TeamMember } from '../types';
+import { type TeamMember } from '../types';
 import { UsersIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 

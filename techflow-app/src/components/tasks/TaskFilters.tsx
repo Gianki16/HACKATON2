@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
-import { TaskStatus, TaskPriority } from '../../types';
+import { type TaskStatus, type TaskPriority } from '../../types';
 import { TASK_STATUS, TASK_PRIORITY } from '../../utils/constants';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 

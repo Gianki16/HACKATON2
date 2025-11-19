@@ -8,7 +8,7 @@ import { TaskList } from '../components/tasks/TaskList';
 import { TaskForm } from '../components/tasks/TaskForm';
 import { ProjectForm } from '../components/projects/ProjectForm';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
-import { Project } from '../types';
+import { type Project } from '../types';
 import { projectService } from '../services/projectService';
 import { taskService } from '../services/taskService';
 import { useTasks } from '../hooks/useTasks';

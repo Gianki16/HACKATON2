@@ -1,7 +1,7 @@
 import React from 'react';
 import { TaskCard } from './TaskCard';
 import { LoadingSpinner } from '../common/LoadingSpinner';
-import { Task } from '../../types';
+import { type Task } from '../../types';
 
 interface TaskListProps {
   tasks: Task[];

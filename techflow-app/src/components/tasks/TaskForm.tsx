@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
 import { Button } from '../common/Button';
-import { Task, TaskStatus, TaskPriority, Project, TeamMember } from '../../types';
+import { type Task, type TaskStatus, type TaskPriority, type Project, type TeamMember } from '../../types';
 import { taskService } from '../../services/taskService';
 import { projectService } from '../../services/projectService';
 import { teamService } from '../../services/teamService';

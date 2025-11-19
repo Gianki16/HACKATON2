@@ -1,5 +1,5 @@
 import api from './api';
-import { Project, ProjectFilters, PaginatedResponse } from '../types';
+import { type Project, type ProjectFilters, type PaginatedResponse } from '../types';
 
 export const projectService = {
   async getProjects(filters: ProjectFilters = {}): Promise<PaginatedResponse<Project>> {

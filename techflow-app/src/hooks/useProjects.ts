@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Project, ProjectFilters } from '../types';
+import { type Project, type ProjectFilters } from '../types';
 import { projectService } from '../services/projectService';
 import toast from 'react-hot-toast';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProjectCard } from './ProjectCard';
 import { LoadingSpinner } from '../common/LoadingSpinner';
-import { Project } from '../../types';
+import { type Project } from '../../types';
 
 interface ProjectListProps {
   projects: Project[];

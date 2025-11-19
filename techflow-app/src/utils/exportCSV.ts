@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { Task } from '../types';
+import { type Task } from '../types';
 import { format } from 'date-fns';
 
 export const exportTasksToCSV = (tasks: Task[]) => {

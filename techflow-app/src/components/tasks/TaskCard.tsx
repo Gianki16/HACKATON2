@@ -5,7 +5,7 @@ import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
 import { Modal } from '../common/Modal';
 import { TaskForm } from './TaskForm';
-import { Task } from '../../types';
+import { type Task } from '../../types';
 import { STATUS_COLORS, PRIORITY_COLORS } from '../../utils/constants';
 import { 
   PencilIcon, 

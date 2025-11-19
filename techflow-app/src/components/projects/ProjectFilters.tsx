@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
-import { ProjectStatus } from '../../types';
+import { type ProjectStatus } from '../../types';
 import { PROJECT_STATUS } from '../../utils/constants';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 

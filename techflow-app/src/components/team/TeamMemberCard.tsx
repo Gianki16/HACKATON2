@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../common/Card';
-import { TeamMember } from '../../types';
+import { type TeamMember } from '../../types';
 import { UserCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
 interface TeamMemberCardProps {

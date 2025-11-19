@@ -6,7 +6,7 @@ import { Card } from '../components/common/Card';
 import { Badge } from '../components/common/Badge';
 import { TaskForm } from '../components/tasks/TaskForm';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
-import { Task } from '../types';
+import { type Task } from '../types';
 import { taskService } from '../services/taskService';
 import { 
   ArrowLeftIcon, 

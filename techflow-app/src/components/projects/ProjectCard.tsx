@@ -5,7 +5,7 @@ import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
 import { Modal } from '../common/Modal';
 import { ProjectForm } from './ProjectForm';
-import { Project } from '../../types';
+import { type Project } from '../../types';
 import { PROJECT_STATUS_COLORS } from '../../utils/constants';
 import { 
   PencilIcon, 

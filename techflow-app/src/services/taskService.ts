@@ -1,5 +1,5 @@
 import api from './api';
-import { Task, TaskFilters, PaginatedResponse } from '../types';
+import { type Task, type TaskFilters, type PaginatedResponse } from '../types';
 
 export const taskService = {
   async getTasks(filters: TaskFilters = {}): Promise<PaginatedResponse<Task>> {

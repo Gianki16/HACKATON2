@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Task, TaskFilters } from '../types';
+import { type Task, type TaskFilters } from '../types';
 import { taskService } from '../services/taskService';
 import toast from 'react-hot-toast';
 

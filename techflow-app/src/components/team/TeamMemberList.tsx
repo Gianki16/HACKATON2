@@ -1,7 +1,7 @@
 import React from 'react';
 import { TeamMemberCard } from './TeamMemberCard';
 import { LoadingSpinner } from '../common/LoadingSpinner';
-import { TeamMember } from '../../types';
+import { type TeamMember } from '../../types';
 
 interface TeamMemberListProps {
   members: TeamMember[];

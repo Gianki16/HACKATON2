@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
 import { Button } from '../common/Button';
-import { Project, ProjectStatus } from '../../types';
+import { type Project, type ProjectStatus } from '../../types';
 import { projectService } from '../../services/projectService';
 import { PROJECT_STATUS } from '../../utils/constants';
 import toast from 'react-hot-toast';
