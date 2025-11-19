@@ -60,11 +60,26 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSuccess, defaultProj
 
     setIsLoading(true);
     try {
-      const dataToSend = {
-        ...formData,
-        assignedTo: formData.assignedTo || undefined,
-        dueDate: formData.dueDate || undefined,
+      // Preparar datos - CORRECCIÓN AQUÍ
+      const dataToSend: any = {
+        title: formData.title,
+        description: formData.description,
+        status: formData.status,
+        priority: formData.priority,
+        projectId: formData.projectId,
       };
+
+      // Solo agregar assignedTo si tiene valor
+      if (formData.assignedTo) {
+        dataToSend.assignedTo = formData.assignedTo;
+      }
+
+      // Solo agregar dueDate si tiene valor y convertir a ISO
+      if (formData.dueDate) {
+        // Convertir fecha YYYY-MM-DD a ISO string
+        const date = new Date(formData.dueDate);
+        dataToSend.dueDate = date.toISOString();
+      }
 
       if (task) {
         await taskService.updateTask(task.id, dataToSend);
@@ -75,11 +90,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSuccess, defaultProj
       }
       onSuccess();
     } catch (error: any) {
-      toast.error(error.response?.data?.message || 'Error al guardar tarea');
+      console.error('Error completo:', error.response?.data); // Para debugging
+      const errorMsg = error.response?.data?.message || 
+                      error.response?.data?.error || 
+                      'Error al guardar tarea';
+      toast.error(errorMsg);
     } finally {
       setIsLoading(false);
     }
   };
+
 
   const statusOptions = Object.entries(TASK_STATUS).map(([key, value]) => ({
     value,

@@ -25,9 +25,15 @@ export const taskService = {
   },
 
   async createTask(data: Partial<Task>): Promise<Task> {
-    const response = await api.post('/tasks', data);
-    return response.data;
+    try {
+      const response = await api.post('/tasks', data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error creating task:', error.response?.data);
+      throw error;
+    }
   },
+
 
   async updateTask(id: string, data: Partial<Task>): Promise<Task> {
     const response = await api.put(`/tasks/${id}`, data);
@@ -43,3 +49,14 @@ export const taskService = {
     await api.delete(`/tasks/${id}`);
   },
 };
+
+  // Agregar esta función helper al final
+  const handleTaskError = (error: any) => {
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    if (error.response?.data?.error) {
+      throw new Error(error.response.data.error);
+    }
+    throw new Error('Error al procesar la solicitud');
+  };
